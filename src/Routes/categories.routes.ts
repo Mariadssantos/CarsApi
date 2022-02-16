@@ -8,6 +8,12 @@ const categoriesRepository = new CategoriesRepository();
 categoriesRoutes.post("/", (req, res) => {
     const { name, description } = req.body;
 
+    const categoryAlredyExist = categoriesRepository.findByName(name);
+
+    if(categoryAlredyExist){
+        return res.status(400).json({ error: "Category Alredy Exist!"})
+    }
+
     categoriesRepository.create({name, description})
 
     return res.status(201).send();
