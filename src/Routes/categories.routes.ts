@@ -1,24 +1,22 @@
 import { Router } from 'express';
-import { Category } from '../model/Category';
+
+import { CategoriesRepository } from '../repositories/CategoriesRespository';
 
 const categoriesRoutes = Router();
-
-const categories: Category[] = [];
+const categoriesRepository = new CategoriesRepository();
 
 categoriesRoutes.post("/", (req, res) => {
     const { name, description } = req.body;
 
-    const category = new Category();
+    categoriesRepository.create({name, description})
 
-    //função do js que que permite que a gente atribua atributos ao nosso objeto.
-    Object.assign(category, {
-        name,
-        description,
-        created_at: new Date()
-    });
-    categories.push(category);
+    return res.status(201).send();
+});
 
-    return res.status(201).send(categories);
+categoriesRoutes.get("/", (req, res) => {
+    const all = categoriesRepository.list();
+
+    return res.json(all)
 })
 
 export {categoriesRoutes};
