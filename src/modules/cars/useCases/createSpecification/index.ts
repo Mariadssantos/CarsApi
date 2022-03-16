@@ -3,7 +3,7 @@ import { CreateSpecificationUseCase } from "./CreateSpecificationUseCase";
 import { CreateSpecificationController } from "./CreateSpecificationController";
 
 
-const specificationsRepository = new SpecificationsRepository();
+const specificationsRepository = null;
 const createSpecificationUseCase = new CreateSpecificationUseCase(specificationsRepository);
 const crateSpecificationController = new CreateSpecificationController(createSpecificationUseCase)
 
