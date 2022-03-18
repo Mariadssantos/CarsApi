@@ -5,7 +5,7 @@ interface IRequest{
     description: string;
 }
 
-injectable()
+@injectable()
 class CreateCategoryUseCase {
     constructor(@inject("CategoriesRepository")
         private categoriesRepository: ICategoriesRepository

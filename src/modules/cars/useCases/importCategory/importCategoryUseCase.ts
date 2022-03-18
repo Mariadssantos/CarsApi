@@ -6,7 +6,7 @@ interface IImportCategory {
     name: string;
     description: string;
 }
-injectable()
+@injectable()
 class ImportCategoryUseCase {
     constructor(
         @inject("CategoriesRepository")
