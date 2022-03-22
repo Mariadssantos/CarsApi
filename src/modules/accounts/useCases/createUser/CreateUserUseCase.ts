@@ -10,7 +10,8 @@ class CreateUserUseCase {
         private usersRepository: IUsersRepository
     ) {}
     async execute({ name, password, email, driver_license }: ICreateUserDTO): Promise<void> {
-        await this.usersRepository.create({ name, password, email, driver_license })
+        const passwordHash = await hash(password, 8);
+        await this.usersRepository.create({ name, password: passwordHash, email, driver_license })
     }
 }
 
