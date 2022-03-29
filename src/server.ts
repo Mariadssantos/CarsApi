@@ -18,11 +18,11 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(SwaggerFile));
 app.use(router)
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-    if(err instanceof AppErrors){
-        return res.status(err.statusCode).json({message: err.message});
+    if (err instanceof AppErrors) {
+        return res.status(err.statusCode).json({ message: err.message });
     }
 
-    return res.status(500).json({ status: "error", message: `Internal Server Error - ${err.message}`});
+    return res.status(500).json({ status: "error", message: `Internal Server Error - ${err.message}` });
 })
 
 app.listen(3333, () => console.log("Server is running"));
