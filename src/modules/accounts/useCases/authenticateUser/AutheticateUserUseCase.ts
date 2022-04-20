@@ -12,7 +12,7 @@ interface IRequest {
 interface IResponse {
     user: {
         email: string;
-        password: string;
+        name: string;
     },
     token: string;
 }
@@ -45,7 +45,7 @@ class AuthenticateUserUseCase {
             token,
             user: {
                 name: user.name,
-                email: user.email
+                email: user.email,
                 }
         }
 
