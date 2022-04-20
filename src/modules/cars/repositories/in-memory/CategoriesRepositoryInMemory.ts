@@ -13,7 +13,6 @@ class CategoriesRepositoryInMemory implements ICategoriesRepository {
     async list(): Promise<Category[]> {
         const list = this.categories
         return list;
-        throw new Error("Method not implemented");
     }
 
     async create({ name, description }: ICreateCategoryDTO): Promise<void> {
