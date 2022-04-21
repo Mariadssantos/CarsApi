@@ -2,7 +2,8 @@
  * For a detailed explanation regarding each configuration property and type check, visit:
  * https://jestjs.io/docs/configuration
  */
-
+import {pathsToModuleNameMapper} from 'ts-jest/utils';
+import { compilerOptions } from './tsconfig.json';
 export default {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
@@ -81,18 +82,7 @@ bail: true,
   // ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-  // moduleNameMapper: {},
-
-  // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
-  // modulePathIgnorePatterns: [],
-
-  // Activates notifications for test results
-  // notify: false,
-
-  // An enum that specifies notification mode. Requires { notify: true }
-  // notifyMode: "failure-change",
-
-  // A preset that is used as a base for Jest's configuration
+    moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {prefix: "<rootDir>/src"}),
 preset: "ts-jest",
 
   // Run tests from one or more projects

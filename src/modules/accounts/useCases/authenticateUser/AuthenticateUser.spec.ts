@@ -1,6 +1,6 @@
-import { AppErrors } from "../../../../errors/AppErrors";
-import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
-import { UsersRepositoryInMemory } from "../../repositories/in-memory/UsersRepositoryInMemory";
+import { AppErrors } from "@errors/AppErrors";
+import { ICreateUserDTO } from "@modules/accounts/dtos/ICreateUserDTO";
+import { UsersRepositoryInMemory } from "@modules/accounts/repositories/in-memory/UsersRepositoryInMemory";
 import { CreateUserUseCase } from "../createUser/CreateUserUseCase";
 import { AuthenticateUserUseCase } from "./AutheticateUserUseCase";
 
@@ -25,7 +25,7 @@ describe('Authenticate User', () => {
         };
         await createUserUseCase.execute(user);
         const result = await authenticateUserUseCase.execute({ email: user.email, password: user.password, });
-        console.log(result);
+        // console.log(result);
         expect(result).toHaveProperty("token")
     });
 
